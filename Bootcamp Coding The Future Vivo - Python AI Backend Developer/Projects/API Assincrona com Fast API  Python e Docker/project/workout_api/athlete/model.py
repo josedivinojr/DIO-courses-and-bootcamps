@@ -8,7 +8,7 @@ class AtheleteModel(BaseModel):
 
     pk_id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String(50), nullable=False)
-    cpf: Mapped[str] = mapped_column(String(11), nullable=False)
+    cpf: Mapped[str] = mapped_column(String(11), unique=True, nullable=False)
     age: Mapped[int] = mapped_column(Integer, nullable=False)
     weight: Mapped[str] = mapped_column(String(11), nullable=False)
     height: Mapped[str] = mapped_column(String(11), nullable=False)
@@ -16,8 +16,8 @@ class AtheleteModel(BaseModel):
 
     # Category relationship
     category: Mapped['CategoryModel'] = relationship(back_populates='athlete')
-    category_id = Mapped[int] = mapped_column(ForeignKey('category.pk_id'))
+    category_id: Mapped[int] = mapped_column(ForeignKey('category.pk_id'))
 
     # TrainingCenter relationship
-    category: Mapped['TrainingCenter'] = relationship(back_populates='athlete')
-    category_id = Mapped[int] = mapped_column(ForeignKey('trainingcenter.pk_id'))
+    training_center: Mapped['TrainingCenter'] = relationship(back_populates='athlete')
+    training_center_id: Mapped[int] = mapped_column(ForeignKey('training_center.pk_id'))
