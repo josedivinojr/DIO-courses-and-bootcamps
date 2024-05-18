@@ -10,8 +10,8 @@ It supports both offline and online migration execution.
 * `sqlalchemy.ext.asyncio.async_engine_from_config`: Creates an asynchronous SQLAlchemy engine from configuration.
 * `sqlalchemy.pool`: Provides connection pooling mechanisms.
 * `alembic.context`: Provides access to the Alembic configuration object.
-* `workout_api.contrib.models.BaseModel`: Base class for models in the `workout_api` application (likely).
-* `workout_api.contrib.repository.models`: All models from the `workout_api.contrib.repository` module (likely).
+* `workout_api.generic.models.BaseModel`: Base class for models in the `workout_api` application (likely).
+* `workout_api.generic.repository.models`: All models from the `workout_api.generic.repository` module (likely).
 
 **Global Variable:**
 
