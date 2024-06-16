@@ -1,0 +1,53 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+
+# Specify the default Python version to use for hooks
+default_language_version:
+    python: python3.12
+
+repos:
+# Define repository of common pre-commit hooks
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0  # Version of the pre-commit-hooks repository
+    hooks:
+    # Check for large files being added
+    -   id: check-added-large-files
+    # Validate TOML files
+    -   id: check-toml
+    # Validate YAML files with an unsafe option allowing custom tags
+    -   id: check-yaml
+        args:
+        -   --unsafe
+    # Ensure files end with a newline
+    -   id: end-of-file-fixer
+    # Remove trailing whitespace
+    -   id: trailing-whitespace
+
+# Define repository for pyupgrade hook to upgrade Python syntax
+-   repo: https://github.com/asottile/pyupgrade
+    rev: v3.7.0  # Version of the pyupgrade repository
+    hooks:
+    # Upgrade syntax to Python 3+ and keep runtime typing
+    -   id: pyupgrade
+        args:
+        - --py3-plus
+        - --keep-runtime-typing
+
+# Define repository for ruff, a fast Python linter
+-   repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.275  # Version of the ruff-pre-commit repository
+    hooks:
+    # Automatically fix linting issues with ruff
+    -   id: ruff
+        args:
+        - --fix
+
+# Define repository for Black, a Python code formatter
+-   repo: https://github.com/psf/black
+    rev: 23.3.0  # Version of the Black repository
+    hooks:
+    # Format Python code with Black
+    -   id: black
+
+# Ignore virtual environment path
+exclude: '^virtualenv/'
